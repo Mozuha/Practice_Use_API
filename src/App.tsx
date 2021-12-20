@@ -14,8 +14,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getAllCoinCapData(initialUrl)
-      console.log(response)
-      const formattedResponse = response.data.map((data: CoinCapResponse) => {
+      //console.log(response)
+      const formattedResponse = response.data?.map((data: CoinCapResponse) => {
         data.supply = new Intl.NumberFormat('en').format(parseFloat(data.supply))
         data.maxSupply = new Intl.NumberFormat('en').format(parseFloat(data.maxSupply!))
         data.marketCapUsd = usdFormat(data.marketCapUsd)
@@ -32,7 +32,7 @@ function App() {
 
     fetchData()
   }, [])
-  console.log(coinCapResponse)
+  //console.log(coinCapResponse)
 
   return (
     <div>

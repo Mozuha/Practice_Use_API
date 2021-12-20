@@ -24,9 +24,9 @@ const CoinCapTable = ({ coinCapData }: Props): JSX.Element => {
           <Table size={'medium'}>
             <CoinCapTableHead />
             <TableBody>
-              {coinCapData.map((data: CoinCapResponse) => {
+              {coinCapData.map((data: CoinCapResponse, idx) => {
                 return (
-                  <TableRow>
+                  <TableRow key={idx}>
                     <TableCell align="center">{data.rank}</TableCell>
                     <TableCell align="left">{data.name} ({data.symbol})</TableCell>
                     <TableCell align="right">{data.priceUsd}</TableCell>

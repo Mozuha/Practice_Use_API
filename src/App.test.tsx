@@ -1,9 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('renders loading, then texts', async () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText('Loading...')).toBeInTheDocument();
+  await waitFor(() => expect(screen.getByText('Cryptocurrency Data')).toBeInTheDocument());
+  await waitFor(() => expect(screen.getByText('Market Cap')).toBeInTheDocument());
 });
